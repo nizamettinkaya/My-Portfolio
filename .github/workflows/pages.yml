@@ -1,39 +1,31 @@
-name: Deploy GitHub Pages
+name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ "main" ]
-  workflow_dispatch:
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
+    branches:
+      - main
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Setup Pages
-        uses: actions/configure-pages@v3
-      - name: Build
-        run: |
-          # Buraya build komutlarınızı ekleyin (gerekirse)
-          # Örnek: npm ci && npm run build
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
-        with:
-          path: '.'  # Projenizdeki deploy edilecek klasörü buraya yazın
-
   deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    needs: build
     steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Install Dependencies
+        run: npm install  # Eğer React veya başka bir framework kullanıyorsan
+
+      - name: Build Project
+        run: npm run build  # React projeleri için genellikle bu kullanılır
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4  # ✅ Sürüm `v4` olarak güncellendi
+        with:
+          name: github-pages
+          path: build  # Eğer React kullanıyorsan "build" klasörünü ayarla
+
       - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v2
-        timeout-minutes: 15  # Zaman aşımı süresini artırıyoruz
+        uses: peaceiris/actions-gh-pages@v4  # ✅ Bu da en güncel sürüm
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build
