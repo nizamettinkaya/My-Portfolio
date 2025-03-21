@@ -8,6 +8,7 @@ import ExperienceSection from './components/sections/ExperienceSection';
 import ContactSection from './components/sections/ContactSection';
 import ServiceNowSection from './components/sections/ServiceNowSection';
 import ServiceNowProjectsSection from './components/sections/ServiceNowProjectsSection';
+import ServiceNowDemoSection from './components/sections/ServiceNowDemoSection';
 import BackToTop from './components/BackToTop';
 
 function App() {
@@ -16,8 +17,10 @@ function App() {
       <Layout>
         <HeroSection />
         <AboutSection />
+        
         <SkillsSection />
         <ServiceNowSection />
+        <ServiceNowDemoSection />
         <ServiceNowProjectsSection />
         <ProjectsSection />
         <ExperienceSection />
