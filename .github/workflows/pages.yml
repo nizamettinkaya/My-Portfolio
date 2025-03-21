@@ -22,10 +22,12 @@ jobs:
         uses: actions/upload-artifact@v4  # ✅ Sürüm `v4` olarak güncellendi
         with:
           name: github-pages
-          path: build  # Eğer React kullanıyorsan "build" klasörünü ayarla
+          path: dist # Eğer React kullanıyorsan "build" klasörünü ayarla
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4  # ✅ Bu da en güncel sürüm
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build
+          publish_dir: ./dist  # Eğer React kullanıyorsan "build" klasörünü ayarla
+        
+
