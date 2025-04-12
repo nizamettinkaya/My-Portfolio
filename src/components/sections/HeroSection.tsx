@@ -11,8 +11,10 @@ export default function HeroSection() {
     if (!typingRef.current) return;
 
     const roles = [
+      "Full Stack Developer",
       "IT Technician",
       "ServiceNow Administrator",
+      "Web Developer",
       "Technical Support Specialist",
       "System Administrator",
     ];
@@ -71,7 +73,7 @@ export default function HeroSection() {
               className="space-y-6"
             >
               <div className="inline-block px-3 py-1 bg-primary-100 dark:bg-primary-900/30 rounded-full text-primary-800 dark:text-primary-300 text-sm font-medium">
-                IT Technician & ServiceNow Administrator
+                {/* Full Stack Utvecklare  & ServiceNow Administrator */}
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white font-heading leading-tight">
                 Delivering <span className="text-primary-600 dark:text-primary-400">enterprise IT</span> solutions
